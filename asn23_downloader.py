@@ -71,11 +71,16 @@ def main():
     parser.add_argument('--quadrimestre', type=str, required=True, help='Quadrimestre (e.g., "2")')
     args = parser.parse_args()
 
+    # Replace `/` with `_` in settore
+    cleaned_settore = args.settore.replace('/', '_')
     encoded_settore = quote(quote(args.settore, safe=''), safe='')
 
     base_url = 'https://asn23.cineca.it/pubblico/miur/esito'
     url = f'{base_url}/{encoded_settore}/{args.fascia}/{args.quadrimestre}'
-    download_dir = f'Quadrimestre_{args.quadrimestre}'  # Dynamic folder name based on quadrimestre
+
+    # Directory structure: settore -> quadrimestre -> fascia
+    download_dir = os.path.join(cleaned_settore, f'Quadrimestre_{args.quadrimestre}', f'Fascia_{args.fascia}')
+    os.makedirs(download_dir, exist_ok=True)
 
     session = requests.Session()
 
@@ -84,7 +89,6 @@ def main():
 
     soup = BeautifulSoup(response.content, 'html.parser')
     tables = soup.find_all('table')
-    os.makedirs(download_dir, exist_ok=True)
 
     if tables:
         process_table(tables[0], download_dir, session, is_second_table=False)
