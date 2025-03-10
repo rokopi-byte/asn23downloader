@@ -1,7 +1,9 @@
 
 # ASN23 Downloader
 
-Questo script automatizza il processo di download dei risultati ASN23 in base a parametri specificati. Estrae i dati dalle tabelle presenti sul sito e salva i file localmente, mantenendo i nomi corretti dei file come forniti dal server.
+Questo script automatizza il processo di download dei risultati ASN23 (Abilitazione Scientifica Nazionale, tornata 2023-2025) in base a parametri specificati. Estrae i dati dalle tabelle presenti sul sito e salva i file localmente, mantenendo i nomi corretti dei file come forniti dal server.
+
+Si consiglia si utilizzarlo appena i risultati escono, si può utilizzare questo [repo](https://github.com/alessandropellegrini/risultati-asn), in quanto dopo poco tempo vengono rimossi e non sono più accessibili.
 
 ## Caratteristiche
 
