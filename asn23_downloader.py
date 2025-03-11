@@ -33,9 +33,12 @@ def process_table(table, download_dir, session, is_second_table=False):
     base_url = 'https://asn23.cineca.it'  # Ensure the base URL is used for relative links
     for row in table.find_all('tr')[1:]:  # Skip the header row
         cells = row.find_all('td')
-        if is_second_table and len(cells) > 2:  # Second table-specific processing
-            folder_name = f"{cells[0].get_text(strip=True)}_{cells[1].get_text(strip=True)}_{cells[6].get_text(strip=True)}"
+        if is_second_table and len(cells) > 2:
+            # Second table-specific processing, format: lastname_firstname_qualified
+            folder_name = (f"{cells[0].get_text(strip=True)}_{cells[1].get_text(strip=True)}_"
+                           f"{cells[6].get_text(strip=True)}")
             folder_name = folder_name.replace(' ', '_')
+            folder_name = folder_name.replace('.', '')
             links = [cells[2].find('a', href=True), cells[3].find('a', href=True)]
         elif not is_second_table and len(cells) > 0:  # First table-specific processing
             folder_name = None

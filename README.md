@@ -56,6 +56,7 @@ python asn23_downloader.py --settore "09/H1" --fascia "2" --quadrimestre "2"
 ### Output
 
 - I file vengono salvati in una directory denominata `Quadrimestre_<QUADRIMESTRE>` (ad esempio, `Quadrimestre_2`).
+- Per ogni candidato viene creata una cartella con il nome in questo formato: `<cognome>_<nome>_<abilitato>` dove`<abilitato>` è `Si/No`.
 - Lo script mantiene i nomi originali dei file come specificati dal server.
 
 ## Come Funziona
