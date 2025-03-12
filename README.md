@@ -3,7 +3,7 @@
 
 Questo script automatizza il processo di download dei risultati ASN23 (Abilitazione Scientifica Nazionale, tornata 2023-2025) in base a parametri specificati. Estrae i dati dalle tabelle presenti sul sito e salva i file localmente, mantenendo i nomi corretti dei file come forniti dal server.
 
-Si consiglia si utilizzarlo appena i risultati escono, si può utilizzare questo [repo](https://github.com/alessandropellegrini/risultati-asn), in quanto dopo poco tempo vengono rimossi e non sono più accessibili.
+Si consiglia si utilizzarlo appena i risultati escono, in quanto dopo poco tempo vengono rimossi e non sono più accessibili. Si può utilizzare questo [repository](https://github.com/alessandropellegrini/risultati-asn) per controllare l'uscita del settore desiderato (eventualmente con servizi tipo [visualping](https://visualping.io/) per avere un alert.
 
 ## Caratteristiche
 
@@ -58,20 +58,6 @@ python asn23_downloader.py --settore "09/H1" --fascia "2" --quadrimestre "2"
 - I file vengono salvati in una directory denominata `Quadrimestre_<QUADRIMESTRE>` (ad esempio, `Quadrimestre_2`).
 - Per ogni candidato viene creata una cartella con il nome in questo formato: `<cognome>_<nome>_<abilitato>` dove`<abilitato>` è `Si/No`.
 - Lo script mantiene i nomi originali dei file come specificati dal server.
-
-## Come Funziona
-
-1. **Doppia Codifica**:  
-   Il `settore` viene codificato due volte per soddisfare i requisiti URL del server.
-
-2. **Costruzione Dinamica dell'URL**:  
-   Lo script costruisce dinamicamente l'URL in base ai parametri forniti.
-
-3. **Gestione di Content-Disposition**:  
-   Se il server fornisce un'intestazione `Content-Disposition`, il nome del file viene estratto da questa.
-
-4. **Elaborazione delle Tabelle**:  
-   Le tabelle presenti sul sito vengono analizzate per identificare i link scaricabili.
 
 
 ## Contributi
